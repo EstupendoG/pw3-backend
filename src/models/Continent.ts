@@ -1,10 +1,10 @@
 export default class Continent{
-    private id: number
+    private id?: number
     private nome: string
-    private descricao: string
+    private descricao?: string
     
     // Constructor
-    constructor(id:number , nome:string , descricao:string){
+    constructor(nome:string , descricao?:string , id?:number){
         this.id = id
         this.nome = nome
         this.descricao = descricao
