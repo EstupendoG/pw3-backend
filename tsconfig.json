@@ -8,6 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "out/",
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "noImplicitAny": false
   },
 }

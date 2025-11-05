@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Continent {
+  id        Int         @id @default(autoincrement())
+  nome      String
+  descricao String?
+}
+
+model Country{
+  id        Int         @id @default(autoincrement())
+  nome      String
+  populacao Int
+  idioma    String
+  moeda     String
+}
+
+model City{
+  id        Int         @id @default(autoincrement())
+  nome      String
+  populacao Int
+  latitude  Int
+  longitude Int
+}
