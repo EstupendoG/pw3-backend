@@ -1,8 +1,7 @@
 import { Request , Response } from 'express'
-import ContinentServices from '../services/ContinentServices'
-import Continent from '../models/Continent'
+import ContinentService from '../services/ContinentService'
 
-const service = new ContinentServices()
+const service = new ContinentService()
 
 // CREATE
 export const createContinent = async (req:Request , res:Response) => {
@@ -13,7 +12,7 @@ export const createContinent = async (req:Request , res:Response) => {
         return res.status(201).json(result)
     }
     catch (err: any) {
-        console.error('[ERRO] Controller: Erro ao criar continente')
+        console.error('[ERRO] Controller: Erro ao criar Continente')
         return res.status(400).json({error: err.message})
     }
 }
@@ -26,7 +25,7 @@ export const readContinents = async (req:Request , res:Response) => {
         return res.status(201).json(result)
     }
     catch(err:any){
-        console.error('[ERRO] Controller: Erro ao ler continentes')
+        console.error('[ERRO] Controller: Erro ao ler Continentes')
         return res.status(400).json({error: err.message})
     }
 }
@@ -40,7 +39,7 @@ export const readContinentById = async (req:Request , res:Response) => {
         return res.status(201).json(result)
     }
     catch(err:any){
-        console.error(`[ERRO] Controller: Erro ao ler continente id ${req.params.id}`)
+        console.error(`[ERRO] Controller: Erro ao ler Continente id ${req.params.id}`)
         return res.status(400).json({error: err.message})
     }
 }
@@ -55,7 +54,7 @@ export const updateContinent = async (req:Request , res:Response) => {
         return res.status(201).json(result)
     }
     catch(err:any){
-        console.error(`[ERRO] Controller: Erro ao atualizar continentes id ${req.params.id}`)
+        console.error(`[ERRO] Controller: Erro ao atualizar Continentes id ${req.params.id}`)
         return res.status(400).json({error: err.message})
     }
 }
@@ -69,7 +68,7 @@ export const deleteContinent = async (req:Request , res:Response) => {
         return res.status(201).json(result)
     }
     catch(err:any){
-        console.error(`[ERRO] Controller: Erro ao deletar continente id ${req.params.id}`)
+        console.error(`[ERRO] Controller: Erro ao deletar Continente id ${req.params.id}`)
         return res.status(400).json({error: err.message})
     }
 }

@@ -3,7 +3,7 @@ create DATABASE pw_atv3;
 create table continent (
 	ctn_id serial primary key,
 	ctn_nome varchar(20) not null,
-	ctn_descricao varchar(200)	
+	ctn_descricao text
 );
 select * from continent;
 

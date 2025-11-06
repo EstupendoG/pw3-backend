@@ -1,10 +1,11 @@
 import { Router } from "express";
-import {createContinent, 
-        readContinents, 
-        readContinentById, 
-        updateContinent, 
-        deleteContinent 
-    } from "../controllers/ContinentController";
+import {
+    createContinent, 
+    readContinents, 
+    readContinentById, 
+    updateContinent, 
+    deleteContinent 
+} from "../controllers/ContinentController";
 
 const router = Router()
 
