@@ -26,12 +26,12 @@ model Country{
 }
 
 model City{
-  id            Int         @id @default(autoincrement())
-  nome          String
-  populacao     Int
-  latitude      Int
-  longitude     Int
+  cty_id            Int         @id @default(autoincrement())
+  cty_nome          String
+  cty_populacao     Int
+  cty_latitude      Int
+  cty_longitude     Int
   
   country       Continent @relation(fields: ["countryId"], references: [id], onDelete: Cascade)
-  countryId     Int
+  ctr_id            Int
 }
