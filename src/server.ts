@@ -2,6 +2,7 @@ import 'dotenv/config'
 import express from "express";
 import ContinentRoutes from './routes/ContinentRoutes'
 import CountryRouter from './routes/CountryRoutes';
+import CityRouter from './routes/CityRoutes'
 
 const app = express()
 const PORT = 8000
@@ -13,7 +14,7 @@ app.listen(PORT, () => {
 
 app.use('/api/continents/', ContinentRoutes)
 app.use('/api/countries', CountryRouter)
-
+app.use('/api/cities', CityRouter)
 
 
 

@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
@@ -12,6 +12,8 @@ model Continent {
   ctn_id            Int         @id @default(autoincrement())
   ctn_nome          String
   ctn_descricao     String?
+
+  countries         Country[]   @relation("ContinentCountries")
 }
 
 model Country{
@@ -21,8 +23,10 @@ model Country{
   ctr_idioma        String
   ctr_moeda         String
 
-  continent         Continent @relation(fields: ["continentId"], references: [id], onDelete: Cascade)
   ctn_id            Int
+  continent         Continent   @relation("ContinentCountries", fields: [ctn_id], references: [ctn_id], onDelete: Cascade)
+
+  cities            City[]      @relation("CountryCities")
 }
 
 model City{
@@ -32,6 +36,6 @@ model City{
   cty_latitude      Int
   cty_longitude     Int
   
-  country       Continent @relation(fields: ["countryId"], references: [id], onDelete: Cascade)
   ctr_id            Int
+  country           Country      @relation("CountryCities", fields: [ctr_id], references: [ctr_id], onDelete: Cascade)
 }

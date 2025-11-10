@@ -4,10 +4,10 @@ export default class City{
     private populacao: number
     private latitude: number
     private longitude: number
-    private id_pais: number
+    private id_pais?: number
     
     // Constructor
-    constructor(nome: string , populacao: number , latitude: number , longitude: number , id_pais: number , id?:number ){
+    constructor(nome: string , populacao: number , latitude: number , longitude: number , id_pais?: number , id?:number ){
         this.nome = nome
         this.populacao = populacao
         this.latitude = latitude

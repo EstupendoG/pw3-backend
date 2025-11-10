@@ -45,6 +45,7 @@ export default class CountryService{
         populacao?: number,
         idioma?: string[],
         moeda?: string,
+        id_continente?: number
     ) {
         return this.repo.update( id, 
         {
@@ -52,6 +53,7 @@ export default class CountryService{
             ctr_populacao: populacao, 
             ctr_idioma: idioma, 
             ctr_moeda: moeda
+            ctn_id: id_continente
         })
     }
 

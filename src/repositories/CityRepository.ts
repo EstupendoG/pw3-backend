@@ -29,14 +29,14 @@ export default class CityRepository{
     }
 
     async findAll(){
-        const found = await prisma.city.findAll()
+        const found = await prisma.city.findMany()
 
         return this.toEntity(found)
     }
 
     async findById(id: number){
         const found = await prisma.city.findUnique({
-            where:{ ctr_id: id }
+            where:{ cty_id: id }
         })
 
         return this.toEntity(found)
