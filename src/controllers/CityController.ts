@@ -22,7 +22,7 @@ export const readCities = async (req:Request, res:Response) => {
     try{
         const response = await service.getAll()
 
-        return res.status(201).json(response)
+        return res.status(200).json(response)
     }
     catch(err: any){
         console.error(`[ERRO] Controller: Erro ao ler Cidades`)
@@ -36,7 +36,7 @@ export const readCityById = async (req:Request, res:Response) => {
         const id = Number(req.params.id)
         const response = await service.getById(id)
 
-        return res.status(201).json(response)
+        return res.status(200).json(response)
     }
     catch(err: any){
         console.error(`[ERRO] Controller: Erro ao ler Cidade id ${req.params.id}`)

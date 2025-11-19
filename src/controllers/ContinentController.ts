@@ -9,7 +9,7 @@ export const createContinent = async (req:Request , res:Response) => {
         const { nome , descricao } = req.body
         const result = await service.create(nome, descricao)
 
-        return res.status(201).json(result)
+        return res.status(200).json(result)
     }
     catch (err: any) {
         console.error('[ERRO] Controller: Erro ao criar Continente')
@@ -22,7 +22,7 @@ export const readContinents = async (req:Request , res:Response) => {
     try{
         const result = await service.getAll()
 
-        return res.status(201).json(result)
+        return res.status(200).json(result)
     }
     catch(err:any){
         console.error('[ERRO] Controller: Erro ao ler Continentes')
@@ -36,7 +36,7 @@ export const readContinentById = async (req:Request , res:Response) => {
         const id = Number(req.params.id)
         const result = await service.getById(id)
 
-        return res.status(201).json(result)
+        return res.status(200).json(result)
     }
     catch(err:any){
         console.error(`[ERRO] Controller: Erro ao ler Continente id ${req.params.id}`)

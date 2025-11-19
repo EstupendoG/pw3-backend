@@ -14,26 +14,26 @@ export default class CountryRepository{
     }
     // CREATE
     async create(country: Country){
-        const created = await prisma.country.create({
-            data: {
-                ctr_nome: country.getNome,
-                ctr_populacao: country.getPopulacao,
-                ctr_idioma: country.getIdioma,
-                ctr_moeda: country.getMoeda,
+            const created = await prisma.country.create({
+                data: {
+                    ctr_nome: country.getNome,
+                    ctr_populacao: country.getPopulacao,
+                    ctr_idioma: country.getIdioma,
+                    ctr_moeda: country.getMoeda,
 
-                ctn_id: country.getId_Continente
-            }
-        })
+                    ctn_id: country.getId_Continente
+                }
+            })
 
-        return this.toEntity(created)
-    }
+            return this.toEntity(created)
+        }
 
     // READ (todos)
     async findAll(): Promise<Country[]>{
         const found = await prisma.country.findMany()
         return found
             .map((f: { 
-                ctr_nome: string; ctr_populacao: number; ctr_idioma: string[]; ctn_id: number; ctr_moeda?: string; 
+                ctr_nome: string; ctr_populacao: number; ctr_idioma: string; ctn_id: number; ctr_moeda?: string; 
             }) => this.toEntity(f))
     }
 
@@ -52,7 +52,7 @@ export default class CountryRepository{
     async update(id: number, data:{
         ctr_nome?: string, 
         ctr_populacao?: number, 
-        ctr_idioma?: string[], 
+        ctr_idioma?: string, 
         ctn_id?: number, 
         ctr_moeda?: string,
     }){

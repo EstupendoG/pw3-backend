@@ -8,18 +8,20 @@ export default class CountryService{
     async create(
         nome: string,
         populacao: number,
-        idioma: string[],
+        idioma: string,
         id_continente: number,
         moeda?: string,
     ) {
-        const fields = [nome, populacao, idioma, id_continente]
-        for(let field of fields){
-            if(!field){
-                throw new Error(`[ERRO] Service: Em país, ${field} é obrigatório.`)
-            }
+        
+        const populacaoNum = Number(populacao)
+        const idContinenteNum = Number(id_continente)
+        
+        
+        if(!nome || !populacaoNum || !idioma || !idContinenteNum){
+            throw new Error(`[ERRO] Service: Em país, um campo obrigatório está vazio.`)
         }
 
-        const c = new Country(nome, populacao, idioma, id_continente, moeda)
+        const c = new Country(nome, populacaoNum, idioma, idContinenteNum, moeda)
         return this.repo.create(c)
     }
 
@@ -43,17 +45,17 @@ export default class CountryService{
         id: number,
         nome?: string,
         populacao?: number,
-        idioma?: string[],
+        idioma?: string,
         moeda?: string,
         id_continente?: number
     ) {
         return this.repo.update( id, 
         {
             ctr_nome: nome, 
-            ctr_populacao: populacao, 
+            ctr_populacao: Number(populacao), 
             ctr_idioma: idioma, 
-            ctr_moeda: moeda
-            ctn_id: id_continente
+            ctr_moeda: moeda,
+            ctn_id: Number(id_continente),
         })
     }
 
