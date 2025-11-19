@@ -52,8 +52,8 @@ export default class CountryService{
             ctr_nome: nome, 
             ctr_populacao: populacao, 
             ctr_idioma: idioma, 
-            ctr_moeda: moeda
-            ctn_id: id_continente
+            ctr_moeda: moeda,
+            ctn_id: id_continente,
         })
     }
 
