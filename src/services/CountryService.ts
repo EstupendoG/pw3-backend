@@ -8,7 +8,7 @@ export default class CountryService{
     async create(
         nome: string,
         populacao: number,
-        idioma: string[],
+        idioma: string,
         id_continente: number,
         moeda?: string,
     ) {
@@ -43,17 +43,17 @@ export default class CountryService{
         id: number,
         nome?: string,
         populacao?: number,
-        idioma?: string[],
+        idioma?: string,
         moeda?: string,
         id_continente?: number
     ) {
         return this.repo.update( id, 
         {
             ctr_nome: nome, 
-            ctr_populacao: populacao, 
+            ctr_populacao: Number(populacao), 
             ctr_idioma: idioma, 
             ctr_moeda: moeda,
-            ctn_id: id_continente,
+            ctn_id: Number(id_continente),
         })
     }
 

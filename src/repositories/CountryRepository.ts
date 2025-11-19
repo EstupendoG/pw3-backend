@@ -9,7 +9,8 @@ export default class CountryRepository{
             obj.ctr_populacao,
             obj.ctr_idioma,
             obj.ctn_id,
-            obj.ctr_moeda ?? undefined
+            obj.ctr_moeda ?? undefined,
+            obj.ctr_id,
         )
     }
     // CREATE
@@ -19,7 +20,7 @@ export default class CountryRepository{
                 ctr_nome: country.getNome,
                 ctr_populacao: country.getPopulacao,
                 ctr_idioma: country.getIdioma,
-                ctr_moeda: country.getMoeda,
+                ctr_moeda: country.getMoeda ?? "",
 
                 ctn_id: country.getId_Continente
             }
@@ -32,9 +33,7 @@ export default class CountryRepository{
     async findAll(): Promise<Country[]>{
         const found = await prisma.country.findMany()
         return found
-            .map((f: { 
-                ctr_nome: string; ctr_populacao: number; ctr_idioma: string[]; ctn_id: number; ctr_moeda?: string; 
-            }) => this.toEntity(f))
+            .map((f) => this.toEntity(f))
     }
 
     // READ (por id)
@@ -52,13 +51,19 @@ export default class CountryRepository{
     async update(id: number, data:{
         ctr_nome?: string, 
         ctr_populacao?: number, 
-        ctr_idioma?: string[], 
+        ctr_idioma?: string, 
         ctn_id?: number, 
         ctr_moeda?: string,
     }){
+        const { ctn_id, ...resto } = data;
+        const updateData: any = { ...resto };
+        if (ctn_id !== undefined) {
+            updateData.ctn_id = { set: ctn_id };
+        }
+
         const updated = await prisma.country.update({
             where: {ctr_id: id},
-            data
+            data: updateData
         })
 
         return this.toEntity(updated)

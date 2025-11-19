@@ -2,12 +2,12 @@ export default class Country {
     private id?: number
     private nome: string
     private populacao: number
-    private idioma: string[]
+    private idioma: string
     private moeda?: string
     private id_continente: number
 
     // Constructor
-    constructor (nome:string , populacao:number , idioma:string[] , id_continente:number, moeda?:string, id?:number ){
+    constructor (nome:string , populacao:number , idioma:string , id_continente:number, moeda?:string, id?:number ){
         this.id = id
         this.nome = nome
         this.populacao = populacao
@@ -46,7 +46,7 @@ export default class Country {
     set setPopulacao(populacao:number){
         this.populacao = populacao
     }
-    set setIdioma(idioma:string[]){
+    set setIdioma(idioma:string){
         this.idioma = idioma
     }
     set setMoeda(moeda:string){

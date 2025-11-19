@@ -8,11 +8,12 @@ export default class CityRepository{
             obj.cty_populacao,
             obj.cty_latitude,
             obj.cty_longitude,
-            obj.ctr_id
+            obj.ctr_id,
+            obj.cty_id,
         )
     }
 
-    async create(city: City){
+    async create(city: City): Promise<City>{
         const created = await prisma.city.create({
             data: {
                 cty_nome: city.getNome,
@@ -28,13 +29,13 @@ export default class CityRepository{
         return this.toEntity(created)
     }
 
-    async findAll(){
+    async findAll(): Promise<City[]>{
         const found = await prisma.city.findMany()
-
-        return this.toEntity(found)
+        return found
+            .map((f) => this.toEntity(f))
     }
 
-    async findById(id: number){
+    async findById(id: number): Promise<City | null>{
         const found = await prisma.city.findUnique({
             where:{ cty_id: id }
         })
@@ -49,6 +50,13 @@ export default class CityRepository{
         cty_longitude?: number,
         ctr_id?: number
     }){
+
+        const { ctr_id, ...resto } = data;
+        const updateData: any = { ...resto };
+        if (ctr_id !== undefined) {
+            updateData.ctr_id = { set: ctr_id };
+        }
+
         const updated = await prisma.city.update({
             where: { cty_id: id },
             data
