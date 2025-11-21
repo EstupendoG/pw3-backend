@@ -6,8 +6,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "rootDir": "src/",
     "outDir": "out/",
     "moduleResolution": "node",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "lib": [ "es2015" ]
   },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

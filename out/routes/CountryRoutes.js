@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var CountryController_1 = require("../controllers/CountryController");
+var router = (0, express_1.Router)();
+router.post('/', CountryController_1.createCountry);
+router.get('/', CountryController_1.readCountries);
+router.get('/:id', CountryController_1.readCountryById);
+router.put('/:id', CountryController_1.updateCountry);
+router.delete('/:id', CountryController_1.deleteCountry);
+exports.default = router;
