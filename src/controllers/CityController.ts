@@ -27,8 +27,8 @@ export const createCity = async (req:Request, res:Response) => {
     }
 }
 
-// READ (todos)
-export const readCities = async (req:Request, res:Response) => {
+// READ
+export const readCities = async (req:Request , res:Response) => {
     try{
         const result = await service.getAll()
 
@@ -40,16 +40,31 @@ export const readCities = async (req:Request, res:Response) => {
     }
 }
 
-// READ (por id)
-export const readCityById = async (req:Request, res:Response) => {
+// READ (count)
+export const readCitiesCount = async (req:Request , res:Response) => {
     try{
-        const id = Number(req.params.id)
-        const result = await service.getById(id)
+        const result = await service.getCount()
 
         return res.status(200).json(result)
     }
     catch(err: any){
-        console.error(`[ERRO] Controller: Erro ao ler Cidade id ${req.params.id}`)
+        console.error(`[ERRO] Controller: Erro ao contar Cidades`)
+        return res.status(400).json({error: err.message})
+    }
+}
+
+// READ (paginação)
+export const readCitiesPage = async (req:Request, res:Response) => {
+    try{
+        const page = Number(req.params.page)
+        const limit = Number(req.params.limit)
+        
+        const result = await service.getPage(page, limit)
+
+        return res.status(200).json(result)
+    }
+    catch(err: any){
+        console.error(`[ERRO] Controller: Erro ao paginar Cidades`)
         return res.status(400).json({error: err.message})
     }
 }

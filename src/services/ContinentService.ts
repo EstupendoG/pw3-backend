@@ -11,31 +11,39 @@ export default class ContinentServices{
         }
 
         const c = new Continent(nome, descricao)
-        return this.repo.create(c)
+        return await this.repo.create(c)
     }
 
-    // READ (todos)
+    // READ
     async getAll(){
-        return this.repo.findAll()
+        return await this.repo.findAll()
     }
 
-    // READ (por id)
-    async getById(id:number){
-        const c = await this.repo.findById(id)
+    // READ (total)
+    async getCount(){
+        return await this.repo.findCount()
+    }
+
+    // READ (paginação)
+    async getPage(page:number , limit:number){
+        const offset = (page - 1) * limit
+        const c = await this.repo.findPage(offset, limit)
+
         if(!c){
-            throw new Error(`[ERROR] Service: Em continente, não foi possível achar id ${id}`)
+            throw new Error(`[ERRO] Serivce: Em continente, não foi possível paginar os continente`)
         }
+
         return c
     }
 
     // UPDATE
     async update(id:number , nome?: string , descricao?: string){
-        return this.repo.update(id , {ctn_nome: nome, ctn_descricao: descricao})
+        return await this.repo.update(id , {ctn_nome: nome, ctn_descricao: descricao})
     }
 
     // DELETE
     async delete(id:number){
-        return this.repo.delete(id)
+        return await this.repo.delete(id)
     }
 
 }

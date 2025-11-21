@@ -27,7 +27,7 @@ export const createCountry = async (req:Request , res:Response) => {
     }
 }
 
-// READ (todos)
+// READ
 export const readCountries = async (req:Request , res:Response) => {
     try{
         const result = await service.getAll()
@@ -40,19 +40,35 @@ export const readCountries = async (req:Request , res:Response) => {
     }
 }
 
-// READ (por id)
-export const readCountryById = async (req:Request , res:Response) => {
+// READ (total)
+export const readCountriesCount = async (req:Request , res:Response) => {
     try{
-        const id = Number(req.params.id)
-        const result = await service.getById(id)
+        const result = await service.getCount()
 
         return res.status(200).json(result)
     }
     catch(err: any){
-        console.error(`[ERRO] Controller: Erro ao ler País id ${req.params.id}`)
+        console.error(`[ERRO] Controller: Erro ao contar Países`)
         return res.status(400).json({error: err.message})
     }
 }
+
+// READ (paginação)
+export const readCountriesPage = async (req:Request , res:Response) => {
+    try{
+        const page = Number(req.params.page)
+        const limit = Number(req.params.limit)
+
+        const result = await service.getPage(page, limit)
+
+        return res.status(200).json(result)
+    }
+    catch(err: any){
+        console.error(`[ERRO] Controller: Erro ao ler Países Paginados`)
+        return res.status(400).json({error: err.message})
+    }
+}
+
 
 // UPDATE
 export const updateCountry = async (req:Request , res:Response) => {

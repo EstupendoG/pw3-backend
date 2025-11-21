@@ -29,22 +29,36 @@ export default class CountryRepository{
         return this.toEntity(created)
     }
 
-    // READ (todos)
+    // READ
     async findAll(): Promise<Country[]>{
-        const found = await prisma.country.findMany()
+        const found = await prisma.country.findMany({
+            orderBy: {
+                ctr_nome: 'asc'
+            }
+        })
+
         return found
             .map((f) => this.toEntity(f))
     }
 
-    // READ (por id)
-    async findById(id: number): Promise<Country | null>{
-        const found = await prisma.country.findUnique({
-            where: {ctr_id: id}
-        })
+    // READ (total)
+    async findCount(): Promise<number>{
+        const count = await prisma.country.count()
 
-        return found 
-            ? this.toEntity(found)
-            : null
+        return count
+    }
+
+    // READ (paginação)
+    async findPage(skip:number , take:number): Promise<Country[]>{
+        const found = await prisma.country.findMany({
+            skip,
+            take,
+            orderBy: {
+                ctr_id: 'asc'
+            },
+        })
+        return found
+            .map((f) => this.toEntity(f))
     }
 
     // UPDATE

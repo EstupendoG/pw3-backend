@@ -17,7 +17,7 @@ export const createContinent = async (req:Request , res:Response) => {
     }
 }
 
-// READ (todos)
+// READ 
 export const readContinents = async (req:Request , res:Response) => {
     try{
         const result = await service.getAll()
@@ -30,16 +30,30 @@ export const readContinents = async (req:Request , res:Response) => {
     }
 }
 
-// READ (por id)
-export const readContinentById = async (req:Request , res:Response) => {
+// READ (total)
+export const readContinentsCount = async (req:Request , res:Response) => {
     try{
-        const id = Number(req.params.id)
-        const result = await service.getById(id)
-
+        const result = await service.getCount()
+        
         return res.status(201).json(result)
     }
     catch(err:any){
-        console.error(`[ERRO] Controller: Erro ao ler Continente id ${req.params.id}`)
+        console.error('[ERRO] Controller: Erro ao ler Continentes')
+        return res.status(400).json({error: err.message})
+    }
+}
+
+// READ (paginação)
+export const readContinentsPage = async (req:Request , res:Response) => {
+    try{
+        const page = Number(req.params.page)
+        const limit = Number(req.params.limit)
+        const result = await service.getPage(page, limit)
+        
+        return res.status(201).json(result)
+    }
+    catch(err:any){
+        console.error('[ERRO] Controller: Erro ao ler Continentes')
         return res.status(400).json({error: err.message})
     }
 }

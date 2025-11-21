@@ -20,19 +20,26 @@ export default class CountryService{
         }
 
         const c = new Country(nome, populacao, idioma, id_continente, moeda)
-        return this.repo.create(c)
+        return await this.repo.create(c)
     }
 
-    // READ (todos)
+    // READ
     async getAll(){
-        return this.repo.findAll()
+        return await this.repo.findAll()
     }
 
-    // READ (por id)
-    async getById(id: number){
-        const c = this.repo.findById(id)
+    // READ (total)
+    async getCount(){
+        return await this.repo.findCount()
+    }
+
+    // READ (paginação)
+    async getPage(page:number , limit:number){
+        const offset = (page - 1) * limit
+        const c = await this.repo.findPage(offset, limit)
+
         if(!c){
-            throw new Error(`[ERRO] Serivce: Em país, não foi possível achar o id ${id}`)
+            throw new Error(`[ERRO] Serivce: Em país, não foi possível paginar os países`)
         }
 
         return c
@@ -47,7 +54,7 @@ export default class CountryService{
         moeda?: string,
         id_continente?: number
     ) {
-        return this.repo.update( id, 
+        return await this.repo.update( id, 
         {
             ctr_nome: nome, 
             ctr_populacao: Number(populacao), 
@@ -59,6 +66,6 @@ export default class CountryService{
 
     // DELETE
     async delete(id: number){
-        return this.repo.delete(id)
+        return await this.repo.delete(id)
     }
 }

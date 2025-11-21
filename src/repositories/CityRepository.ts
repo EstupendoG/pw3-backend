@@ -13,6 +13,7 @@ export default class CityRepository{
         )
     }
 
+    // CREATE
     async create(city: City): Promise<City>{
         const created = await prisma.city.create({
             data: {
@@ -29,20 +30,39 @@ export default class CityRepository{
         return this.toEntity(created)
     }
 
-    async findAll(): Promise<City[]>{
-        const found = await prisma.city.findMany()
+    // READ
+    async findAll(): Promise<City[]> {
+        const found = await prisma.city.findMany({
+            orderBy:{
+                cty_nome: 'asc'
+            }
+        })
+
         return found
             .map((f) => this.toEntity(f))
     }
 
-    async findById(id: number): Promise<City | null>{
-        const found = await prisma.city.findUnique({
-            where:{ cty_id: id }
-        })
-
-        return this.toEntity(found)
+    // READ (total)
+    async findCount(): Promise<number>{
+        const count = await prisma.city.count()
+        
+        return count
     }
 
+    // READ (paginação)
+    async findPage(skip:number , take:number): Promise<City[]>{
+        const found = await prisma.city.findMany({
+            skip,
+            take,
+            orderBy: {
+                cty_id: 'desc'
+            },
+        })
+        return found
+            .map((f) => this.toEntity(f))
+    }
+
+    // UPDATE
     async update(id: number, data: {
         cty_nome?: string,
         cty_populacao?: number,
@@ -65,6 +85,7 @@ export default class CityRepository{
         return this.toEntity(updated)
     }
 
+    // DELETE
     async delete(id: number){
         const deleted = await prisma.city.delete({
             where: {cty_id: id}

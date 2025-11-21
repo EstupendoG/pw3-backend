@@ -2,6 +2,14 @@ import Continent from "../models/Continent";
 import prisma from "../prismaClient";
 
 export default class ContinentRepository {
+    private toEntity(obj: any){
+        return new Continent(
+            obj.ctn_nome,
+            obj.ctn_descricao,
+            obj.ctn_id,
+        )
+    }
+
     // CREATE
     async create(continent: Continent){
         const created = await prisma.continent.create({
@@ -14,21 +22,36 @@ export default class ContinentRepository {
         return new Continent(created.ctn_nome , created.ctn_descricao ?? undefined, created.ctn_id)
     }
 
-    // READ (todos)
+    // READ
     async findAll(): Promise<Continent[]>{
-        const found = await prisma.continent.findMany()
-        return found.map(f => new Continent(f.ctn_nome, f.ctn_descricao ?? undefined, f.ctn_id))
+        const found = await prisma.continent.findMany({
+            orderBy: {
+                ctn_nome: 'asc'
+            },
+        })
+        return found
+            .map(f => new Continent(f.ctn_nome, f.ctn_descricao ?? undefined, f.ctn_id))
     }
 
-    // READ (por id)
-    async findById(id: number): Promise<Continent | null> {
-        const found = await prisma.continent.findUnique({
-            where: { ctn_id: id }
+    // READ (total)
+    async findCount(): Promise<number>{
+        const count = await prisma.continent.count()
+
+        return count
+    }
+
+    // READ (paginação)
+    async findPage(skip:number , take:number): Promise<Continent[]>{
+        const found = await prisma.continent.findMany({
+            skip,
+            take,
+            orderBy: {
+                ctn_id: 'asc'
+            }
         })
 
-        return found 
-            ? new Continent(found.ctn_nome, found.ctn_descricao ?? undefined, found.ctn_id)
-            : null
+        return found
+            .map((f) => this.toEntity(f))
     }
 
     // UPDATE

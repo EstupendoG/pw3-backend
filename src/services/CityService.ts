@@ -23,16 +23,34 @@ export default class CityService{
         return this.repo.create(c)
     }
 
-    // READ (todos)
+    // READ
     async getAll(){
-        return this.repo.findAll()
+        const c = await this.repo.findAll()
+
+        if(!c){
+            throw new Error(`[ERRO] Serivce: Em cidades, não foi possível ler as cidades`)
+        }
+
+        return c
     }
 
-    // READ (por id)
-    async getById(id: number){
-        const c = this.repo.findById(id)
+    // READ (total)
+    async getCount(){
+        const c = this.repo.findCount()
+
         if(!c){
-            throw new Error(`[ERRO] Serivce: Em país, não foi possível achar o id ${id}`)
+            throw new Error(`[ERRO] Serivce: Em cidades, não foi possível contar as cidades`)
+        }
+    }
+
+    // READ (paginação)
+    async getPage(page:number , limit:number){
+        const offset = (page - 1) * limit
+
+        const c = this.repo.findPage(offset, limit)
+
+        if(!c){
+            throw new Error(`[ERRO] Serivce: Em cidades, não foi possível paginar as cidades`)
         }
 
         return c
