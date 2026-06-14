@@ -44,6 +44,9 @@ var prismaClient_1 = __importDefault(require("../prismaClient"));
 var ContinentRepository = /** @class */ (function () {
     function ContinentRepository() {
     }
+    ContinentRepository.prototype.toEntity = function (obj) {
+        return new Continent_1.default(obj.ctn_nome, obj.ctn_descricao, obj.ctn_id);
+    };
     // CREATE
     ContinentRepository.prototype.create = function (continent) {
         return __awaiter(this, void 0, void 0, function () {
@@ -64,35 +67,57 @@ var ContinentRepository = /** @class */ (function () {
             });
         });
     };
-    // READ (todos)
+    // READ
     ContinentRepository.prototype.findAll = function () {
         return __awaiter(this, void 0, void 0, function () {
             var found;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, prismaClient_1.default.continent.findMany()];
+                    case 0: return [4 /*yield*/, prismaClient_1.default.continent.findMany({
+                            orderBy: {
+                                ctn_nome: 'asc'
+                            },
+                        })];
                     case 1:
                         found = _a.sent();
-                        return [2 /*return*/, found.map(function (f) { var _a; return new Continent_1.default(f.ctn_nome, (_a = f.ctn_descricao) !== null && _a !== void 0 ? _a : undefined, f.ctn_id); })];
+                        return [2 /*return*/, found
+                                .map(function (f) { var _a; return new Continent_1.default(f.ctn_nome, (_a = f.ctn_descricao) !== null && _a !== void 0 ? _a : undefined, f.ctn_id); })];
                 }
             });
         });
     };
-    // READ (por id)
-    ContinentRepository.prototype.findById = function (id) {
+    // READ (total)
+    ContinentRepository.prototype.findCount = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var count;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, prismaClient_1.default.continent.count()];
+                    case 1:
+                        count = _a.sent();
+                        return [2 /*return*/, count];
+                }
+            });
+        });
+    };
+    // READ (paginação)
+    ContinentRepository.prototype.findPage = function (skip, take) {
         return __awaiter(this, void 0, void 0, function () {
             var found;
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0: return [4 /*yield*/, prismaClient_1.default.continent.findUnique({
-                            where: { ctn_id: id }
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, prismaClient_1.default.continent.findMany({
+                            skip: skip,
+                            take: take,
+                            orderBy: {
+                                ctn_id: 'asc'
+                            }
                         })];
                     case 1:
-                        found = _b.sent();
+                        found = _a.sent();
                         return [2 /*return*/, found
-                                ? new Continent_1.default(found.ctn_nome, (_a = found.ctn_descricao) !== null && _a !== void 0 ? _a : undefined, found.ctn_id)
-                                : null];
+                                .map(function (f) { return _this.toEntity(f); })];
                 }
             });
         });

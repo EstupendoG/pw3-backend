@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteContinent = exports.updateContinent = exports.readContinentById = exports.readContinents = exports.createContinent = void 0;
+exports.deleteContinent = exports.updateContinent = exports.readContinentsPage = exports.readContinentsCount = exports.readContinents = exports.createContinent = void 0;
 var ContinentService_1 = __importDefault(require("../services/ContinentService"));
 var service = new ContinentService_1.default();
 // CREATE
@@ -63,7 +63,7 @@ var createContinent = function (req, res) { return __awaiter(void 0, void 0, voi
     });
 }); };
 exports.createContinent = createContinent;
-// READ (todos)
+// READ 
 var readContinents = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var result, err_2;
     return __generator(this, function (_a) {
@@ -83,30 +83,51 @@ var readContinents = function (req, res) { return __awaiter(void 0, void 0, void
     });
 }); };
 exports.readContinents = readContinents;
-// READ (por id)
-var readContinentById = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, result, err_3;
+// READ (total)
+var readContinentsCount = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var result, err_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                id = Number(req.params.id);
-                return [4 /*yield*/, service.getById(id)];
+                return [4 /*yield*/, service.getCount()];
             case 1:
                 result = _a.sent();
                 return [2 /*return*/, res.status(201).json(result)];
             case 2:
                 err_3 = _a.sent();
-                console.error("[ERRO] Controller: Erro ao ler Continente id ".concat(req.params.id));
+                console.error('[ERRO] Controller: Erro ao ler Continentes');
                 return [2 /*return*/, res.status(400).json({ error: err_3.message })];
             case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.readContinentById = readContinentById;
+exports.readContinentsCount = readContinentsCount;
+// READ (paginação)
+var readContinentsPage = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var page, limit, result, err_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                page = Number(req.params.page);
+                limit = Number(req.params.limit);
+                return [4 /*yield*/, service.getPage(page, limit)];
+            case 1:
+                result = _a.sent();
+                return [2 /*return*/, res.status(201).json(result)];
+            case 2:
+                err_4 = _a.sent();
+                console.error('[ERRO] Controller: Erro ao ler Continentes');
+                return [2 /*return*/, res.status(400).json({ error: err_4.message })];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.readContinentsPage = readContinentsPage;
 // UPDATE
 var updateContinent = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, _a, nome, descricao, result, err_4;
+    var id, _a, nome, descricao, result, err_5;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -118,9 +139,9 @@ var updateContinent = function (req, res) { return __awaiter(void 0, void 0, voi
                 result = _b.sent();
                 return [2 /*return*/, res.status(201).json(result)];
             case 2:
-                err_4 = _b.sent();
+                err_5 = _b.sent();
                 console.error("[ERRO] Controller: Erro ao atualizar Continentes id ".concat(req.params.id));
-                return [2 /*return*/, res.status(400).json({ error: err_4.message })];
+                return [2 /*return*/, res.status(400).json({ error: err_5.message })];
             case 3: return [2 /*return*/];
         }
     });
@@ -128,7 +149,7 @@ var updateContinent = function (req, res) { return __awaiter(void 0, void 0, voi
 exports.updateContinent = updateContinent;
 // DELETE
 var deleteContinent = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, result, err_5;
+    var id, result, err_6;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -139,9 +160,9 @@ var deleteContinent = function (req, res) { return __awaiter(void 0, void 0, voi
                 result = _a.sent();
                 return [2 /*return*/, res.status(201).json(result)];
             case 2:
-                err_5 = _a.sent();
+                err_6 = _a.sent();
                 console.error("[ERRO] Controller: Erro ao deletar Continente id ".concat(req.params.id));
-                return [2 /*return*/, res.status(400).json({ error: err_5.message })];
+                return [2 /*return*/, res.status(400).json({ error: err_6.message })];
             case 3: return [2 /*return*/];
         }
     });

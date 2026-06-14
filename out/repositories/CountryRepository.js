@@ -94,14 +94,18 @@ var CountryRepository = /** @class */ (function () {
             });
         });
     };
-    // READ (todos)
+    // READ
     CountryRepository.prototype.findAll = function () {
         return __awaiter(this, void 0, void 0, function () {
             var found;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, prismaClient_1.default.country.findMany()];
+                    case 0: return [4 /*yield*/, prismaClient_1.default.country.findMany({
+                            orderBy: {
+                                ctr_nome: 'asc'
+                            }
+                        })];
                     case 1:
                         found = _a.sent();
                         return [2 /*return*/, found
@@ -110,20 +114,38 @@ var CountryRepository = /** @class */ (function () {
             });
         });
     };
-    // READ (por id)
-    CountryRepository.prototype.findById = function (id) {
+    // READ (total)
+    CountryRepository.prototype.findCount = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var found;
+            var count;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, prismaClient_1.default.country.findUnique({
-                            where: { ctr_id: id }
+                    case 0: return [4 /*yield*/, prismaClient_1.default.country.count()];
+                    case 1:
+                        count = _a.sent();
+                        return [2 /*return*/, count];
+                }
+            });
+        });
+    };
+    // READ (paginação)
+    CountryRepository.prototype.findPage = function (skip, take) {
+        return __awaiter(this, void 0, void 0, function () {
+            var found;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, prismaClient_1.default.country.findMany({
+                            skip: skip,
+                            take: take,
+                            orderBy: {
+                                ctr_id: 'asc'
+                            },
                         })];
                     case 1:
                         found = _a.sent();
                         return [2 /*return*/, found
-                                ? this.toEntity(found)
-                                : null];
+                                .map(function (f) { return _this.toEntity(f); })];
                 }
             });
         });

@@ -50,33 +50,53 @@ var ContinentServices = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var c;
             return __generator(this, function (_a) {
-                if (!nome) {
-                    throw new Error('[ERROR] Service: Em continente, nome é obrigátorio');
+                switch (_a.label) {
+                    case 0:
+                        if (!nome) {
+                            throw new Error('[ERROR] Service: Em continente, nome é obrigátorio');
+                        }
+                        c = new Continent_1.default(nome, descricao);
+                        return [4 /*yield*/, this.repo.create(c)];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
-                c = new Continent_1.default(nome, descricao);
-                return [2 /*return*/, this.repo.create(c)];
             });
         });
     };
-    // READ (todos)
+    // READ
     ContinentServices.prototype.getAll = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.repo.findAll()];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repo.findAll()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };
-    // READ (por id)
-    ContinentServices.prototype.getById = function (id) {
+    // READ (total)
+    ContinentServices.prototype.getCount = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var c;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.repo.findById(id)];
+                    case 0: return [4 /*yield*/, this.repo.findCount()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    // READ (paginação)
+    ContinentServices.prototype.getPage = function (page, limit) {
+        return __awaiter(this, void 0, void 0, function () {
+            var offset, c;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        offset = (page - 1) * limit;
+                        return [4 /*yield*/, this.repo.findPage(offset, limit)];
                     case 1:
                         c = _a.sent();
                         if (!c) {
-                            throw new Error("[ERROR] Service: Em continente, n\u00E3o foi poss\u00EDvel achar id ".concat(id));
+                            throw new Error("[ERRO] Serivce: Em continente, n\u00E3o foi poss\u00EDvel paginar os continente");
                         }
                         return [2 /*return*/, c];
                 }
@@ -87,7 +107,10 @@ var ContinentServices = /** @class */ (function () {
     ContinentServices.prototype.update = function (id, nome, descricao) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.repo.update(id, { ctn_nome: nome, ctn_descricao: descricao })];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repo.update(id, { ctn_nome: nome, ctn_descricao: descricao })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };
@@ -95,7 +118,10 @@ var ContinentServices = /** @class */ (function () {
     ContinentServices.prototype.delete = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.repo.delete(id)];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repo.delete(id)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };

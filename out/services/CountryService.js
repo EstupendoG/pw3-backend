@@ -50,36 +50,60 @@ var CountryService = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var fields, _i, fields_1, field, c;
             return __generator(this, function (_a) {
-                fields = [nome, populacao, idioma, id_continente];
-                for (_i = 0, fields_1 = fields; _i < fields_1.length; _i++) {
-                    field = fields_1[_i];
-                    if (!field) {
-                        throw new Error("[ERRO] Service: Em pa\u00EDs, ".concat(field, " \u00E9 obrigat\u00F3rio."));
-                    }
+                switch (_a.label) {
+                    case 0:
+                        fields = [nome, populacao, idioma, id_continente];
+                        for (_i = 0, fields_1 = fields; _i < fields_1.length; _i++) {
+                            field = fields_1[_i];
+                            if (!field) {
+                                throw new Error("[ERRO] Service: Em pa\u00EDs, ".concat(field, " \u00E9 obrigat\u00F3rio."));
+                            }
+                        }
+                        c = new Country_1.default(nome, populacao, idioma, id_continente, moeda);
+                        return [4 /*yield*/, this.repo.create(c)];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
-                c = new Country_1.default(nome, populacao, idioma, id_continente, moeda);
-                return [2 /*return*/, this.repo.create(c)];
             });
         });
     };
-    // READ (todos)
+    // READ
     CountryService.prototype.getAll = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.repo.findAll()];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repo.findAll()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };
-    // READ (por id)
-    CountryService.prototype.getById = function (id) {
+    // READ (total)
+    CountryService.prototype.getCount = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var c;
             return __generator(this, function (_a) {
-                c = this.repo.findById(id);
-                if (!c) {
-                    throw new Error("[ERRO] Serivce: Em pa\u00EDs, n\u00E3o foi poss\u00EDvel achar o id ".concat(id));
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repo.findCount()];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
-                return [2 /*return*/, c];
+            });
+        });
+    };
+    // READ (paginação)
+    CountryService.prototype.getPage = function (page, limit) {
+        return __awaiter(this, void 0, void 0, function () {
+            var offset, c;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        offset = (page - 1) * limit;
+                        return [4 /*yield*/, this.repo.findPage(offset, limit)];
+                    case 1:
+                        c = _a.sent();
+                        if (!c) {
+                            throw new Error("[ERRO] Serivce: Em pa\u00EDs, n\u00E3o foi poss\u00EDvel paginar os pa\u00EDses");
+                        }
+                        return [2 /*return*/, c];
+                }
             });
         });
     };
@@ -87,13 +111,16 @@ var CountryService = /** @class */ (function () {
     CountryService.prototype.update = function (id, nome, populacao, idioma, moeda, id_continente) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.repo.update(id, {
-                        ctr_nome: nome,
-                        ctr_populacao: Number(populacao),
-                        ctr_idioma: idioma,
-                        ctr_moeda: moeda,
-                        ctn_id: Number(id_continente),
-                    })];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repo.update(id, {
+                            ctr_nome: nome,
+                            ctr_populacao: Number(populacao),
+                            ctr_idioma: idioma,
+                            ctr_moeda: moeda,
+                            ctn_id: Number(id_continente),
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };
@@ -101,7 +128,10 @@ var CountryService = /** @class */ (function () {
     CountryService.prototype.delete = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.repo.delete(id)];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repo.delete(id)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };

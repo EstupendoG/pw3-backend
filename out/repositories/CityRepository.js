@@ -69,6 +69,7 @@ var CityRepository = /** @class */ (function () {
     CityRepository.prototype.toEntity = function (obj) {
         return new City_1.default(obj.cty_nome, obj.cty_populacao, obj.cty_latitude, obj.cty_longitude, obj.ctr_id, obj.cty_id);
     };
+    // CREATE
     CityRepository.prototype.create = function (city) {
         return __awaiter(this, void 0, void 0, function () {
             var created;
@@ -90,13 +91,18 @@ var CityRepository = /** @class */ (function () {
             });
         });
     };
+    // READ
     CityRepository.prototype.findAll = function () {
         return __awaiter(this, void 0, void 0, function () {
             var found;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, prismaClient_1.default.city.findMany()];
+                    case 0: return [4 /*yield*/, prismaClient_1.default.city.findMany({
+                            orderBy: {
+                                cty_nome: 'asc'
+                            }
+                        })];
                     case 1:
                         found = _a.sent();
                         return [2 /*return*/, found
@@ -105,21 +111,43 @@ var CityRepository = /** @class */ (function () {
             });
         });
     };
-    CityRepository.prototype.findById = function (id) {
+    // READ (total)
+    CityRepository.prototype.findCount = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var found;
+            var count;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, prismaClient_1.default.city.findUnique({
-                            where: { cty_id: id }
-                        })];
+                    case 0: return [4 /*yield*/, prismaClient_1.default.city.count()];
                     case 1:
-                        found = _a.sent();
-                        return [2 /*return*/, this.toEntity(found)];
+                        count = _a.sent();
+                        return [2 /*return*/, count];
                 }
             });
         });
     };
+    // READ (paginação)
+    CityRepository.prototype.findPage = function (skip, take) {
+        return __awaiter(this, void 0, void 0, function () {
+            var found;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, prismaClient_1.default.city.findMany({
+                            skip: skip,
+                            take: take,
+                            orderBy: {
+                                cty_id: 'desc'
+                            },
+                        })];
+                    case 1:
+                        found = _a.sent();
+                        return [2 /*return*/, found
+                                .map(function (f) { return _this.toEntity(f); })];
+                }
+            });
+        });
+    };
+    // UPDATE
     CityRepository.prototype.update = function (id, data) {
         return __awaiter(this, void 0, void 0, function () {
             var ctr_id, resto, updateData, updated;
@@ -142,6 +170,7 @@ var CityRepository = /** @class */ (function () {
             });
         });
     };
+    // DELETE
     CityRepository.prototype.delete = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var deleted;

@@ -21,7 +21,6 @@ export default class CityRepository{
                 cty_populacao: city.getPopulacao,
                 cty_latitude: city.getLatitude,
                 cty_longitude: city.getLongitude,
-
                 ctr_id: city.getId_pais
             }
             

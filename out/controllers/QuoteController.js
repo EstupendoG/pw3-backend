@@ -39,48 +39,47 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require("dotenv/config");
-var express_1 = __importDefault(require("express"));
-var cors_1 = __importDefault(require("cors"));
-var ContinentRoutes_1 = __importDefault(require("./routes/ContinentRoutes"));
-var CountryRoutes_1 = __importDefault(require("./routes/CountryRoutes"));
-var CityRoutes_1 = __importDefault(require("./routes/CityRoutes"));
-var GeoRoutes_1 = __importDefault(require("./routes/GeoRoutes"));
-var GeoService_1 = __importDefault(require("./services/GeoService"));
-var QuoteRoutes_1 = __importDefault(require("./routes/QuoteRoutes"));
-var app = (0, express_1.default)();
-var PORT = 8000;
-var geoService = new GeoService_1.default();
-// Inicializa o servidor e sincroniza dados geográficos
-app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
-    var error_1;
+exports.getQuotation = void 0;
+var QuoteService_1 = __importDefault(require("../services/QuoteService"));
+var service = new QuoteService_1.default();
+var getQuotation = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var valor, moedaRaw, moeda, base, apiUrl, response, data, taxa, valorConvertido, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("[INFO] Server iniciado na porta ".concat(PORT));
-                _a.label = 1;
+                _a.trys.push([0, 3, , 4]);
+                valor = Number(req.params.valor);
+                moedaRaw = decodeURIComponent(req.params.moeda);
+                moeda = service.toIso(moedaRaw);
+                console.log(moedaRaw);
+                console.log(moeda);
+                console.log(typeof (moeda));
+                if (!moeda) {
+                    return [2 /*return*/, res.status(400).json({
+                            error: "Moeda '".concat(moedaRaw, "' n\u00E3o reconhecida no dicion\u00E1rio")
+                        })];
+                }
+                base = "BRL";
+                apiUrl = "https://open.er-api.com/v6/latest/".concat(base);
+                return [4 /*yield*/, fetch(apiUrl)];
             case 1:
-                _a.trys.push([1, 3, , 4]);
-                console.log("[INFO] Sincronizando dados geogr\u00E1ficos...");
-                return [4 /*yield*/, geoService.initializeGeoData()];
+                response = _a.sent();
+                return [4 /*yield*/, response.json()];
             case 2:
-                _a.sent();
-                console.log("[INFO] Dados geogr\u00E1ficos sincronizados com sucesso!");
-                return [3 /*break*/, 4];
+                data = _a.sent();
+                console.log(data);
+                taxa = data.rates[moeda];
+                valorConvertido = (valor * taxa).toFixed(2);
+                return [2 /*return*/, res.status(200).json({
+                        quote: valorConvertido,
+                        currency: moeda,
+                    })];
             case 3:
-                error_1 = _a.sent();
-                console.error("[ERRO] Falha ao sincronizar dados geogr\u00E1ficos:", error_1);
-                return [3 /*break*/, 4];
+                err_1 = _a.sent();
+                console.error("Erro ao usar API:", err_1);
+                return [2 /*return*/, res.status(500).json({ error: err_1.message })];
             case 4: return [2 /*return*/];
         }
     });
-}); });
-app.use(express_1.default.json());
-app.use((0, cors_1.default)({
-    origin: 'http://localhost:5173'
-}));
-app.use('/api/continents/', ContinentRoutes_1.default);
-app.use('/api/countries', CountryRoutes_1.default);
-app.use('/api/cities', CityRoutes_1.default);
-app.use('/api/geo', GeoRoutes_1.default);
-app.use('/api/quote', QuoteRoutes_1.default);
+}); };
+exports.getQuotation = getQuotation;

@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteCity = exports.updateCity = exports.readCityById = exports.readCities = exports.createCity = void 0;
+exports.deleteCity = exports.updateCity = exports.readCitiesPage = exports.readCitiesCount = exports.readCities = exports.createCity = void 0;
 var CityService_1 = __importDefault(require("../services/CityService"));
 var service = new CityService_1.default();
 var clearNumber = function (value) {
@@ -66,7 +66,7 @@ var createCity = function (req, res) { return __awaiter(void 0, void 0, void 0, 
     });
 }); };
 exports.createCity = createCity;
-// READ (todos)
+// READ
 var readCities = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var result, err_2;
     return __generator(this, function (_a) {
@@ -86,30 +86,51 @@ var readCities = function (req, res) { return __awaiter(void 0, void 0, void 0, 
     });
 }); };
 exports.readCities = readCities;
-// READ (por id)
-var readCityById = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, result, err_3;
+// READ (count)
+var readCitiesCount = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var result, err_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                id = Number(req.params.id);
-                return [4 /*yield*/, service.getById(id)];
+                return [4 /*yield*/, service.getCount()];
             case 1:
                 result = _a.sent();
                 return [2 /*return*/, res.status(200).json(result)];
             case 2:
                 err_3 = _a.sent();
-                console.error("[ERRO] Controller: Erro ao ler Cidade id ".concat(req.params.id));
+                console.error("[ERRO] Controller: Erro ao contar Cidades");
                 return [2 /*return*/, res.status(400).json({ error: err_3.message })];
             case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.readCityById = readCityById;
+exports.readCitiesCount = readCitiesCount;
+// READ (paginação)
+var readCitiesPage = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var page, limit, result, err_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                page = Number(req.params.page);
+                limit = Number(req.params.limit);
+                return [4 /*yield*/, service.getPage(page, limit)];
+            case 1:
+                result = _a.sent();
+                return [2 /*return*/, res.status(200).json(result)];
+            case 2:
+                err_4 = _a.sent();
+                console.error("[ERRO] Controller: Erro ao paginar Cidades");
+                return [2 /*return*/, res.status(400).json({ error: err_4.message })];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.readCitiesPage = readCitiesPage;
 // UPDATE
 var updateCity = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, _a, nome, populacao, latitude, longitude, id_pais, response, err_4;
+    var id, _a, nome, populacao, latitude, longitude, id_pais, response, err_5;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -121,9 +142,9 @@ var updateCity = function (req, res) { return __awaiter(void 0, void 0, void 0, 
                 response = _b.sent();
                 return [2 /*return*/, res.status(201).json(response)];
             case 2:
-                err_4 = _b.sent();
+                err_5 = _b.sent();
                 console.error("[ERRO] Controller: Erro ao atualizar Cidade id ".concat(req.params.id));
-                return [2 /*return*/, res.status(400).json({ error: err_4.message })];
+                return [2 /*return*/, res.status(400).json({ error: err_5.message })];
             case 3: return [2 /*return*/];
         }
     });
@@ -131,7 +152,7 @@ var updateCity = function (req, res) { return __awaiter(void 0, void 0, void 0, 
 exports.updateCity = updateCity;
 // DELETE
 var deleteCity = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, result, err_5;
+    var id, result, err_6;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -142,9 +163,9 @@ var deleteCity = function (req, res) { return __awaiter(void 0, void 0, void 0, 
                 result = _a.sent();
                 return [2 /*return*/, res.status(201).json(result)];
             case 2:
-                err_5 = _a.sent();
+                err_6 = _a.sent();
                 console.error("[ERRO] Controller: Erro ao deletar Cidade id ".concat(req.params.id));
-                return [2 /*return*/, res.status(400).json({ error: err_5.message })];
+                return [2 /*return*/, res.status(400).json({ error: err_6.message })];
             case 3: return [2 /*return*/];
         }
     });

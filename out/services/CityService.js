@@ -62,22 +62,45 @@ var CityService = /** @class */ (function () {
             });
         });
     };
-    // READ (todos)
+    // READ
     CityService.prototype.getAll = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this.repo.findAll()];
-            });
-        });
-    };
-    // READ (por id)
-    CityService.prototype.getById = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var c;
             return __generator(this, function (_a) {
-                c = this.repo.findById(id);
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repo.findAll()];
+                    case 1:
+                        c = _a.sent();
+                        if (!c) {
+                            throw new Error("[ERRO] Serivce: Em cidades, n\u00E3o foi poss\u00EDvel ler as cidades");
+                        }
+                        return [2 /*return*/, c];
+                }
+            });
+        });
+    };
+    // READ (total)
+    CityService.prototype.getCount = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var c;
+            return __generator(this, function (_a) {
+                c = this.repo.findCount();
                 if (!c) {
-                    throw new Error("[ERRO] Serivce: Em pa\u00EDs, n\u00E3o foi poss\u00EDvel achar o id ".concat(id));
+                    throw new Error("[ERRO] Serivce: Em cidades, n\u00E3o foi poss\u00EDvel contar as cidades");
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    // READ (paginação)
+    CityService.prototype.getPage = function (page, limit) {
+        return __awaiter(this, void 0, void 0, function () {
+            var offset, c;
+            return __generator(this, function (_a) {
+                offset = (page - 1) * limit;
+                c = this.repo.findPage(offset, limit);
+                if (!c) {
+                    throw new Error("[ERRO] Serivce: Em cidades, n\u00E3o foi poss\u00EDvel paginar as cidades");
                 }
                 return [2 /*return*/, c];
             });

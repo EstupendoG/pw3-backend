@@ -28,7 +28,7 @@ app.listen(PORT, async () => {
 app.use(express.json())
 
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: process.env.FRONTEND_ORIGIN
 }))
 
 app.use('/api/continents/', ContinentRoutes)

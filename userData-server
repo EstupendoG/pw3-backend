@@ -1,0 +1,21 @@
+#!/bin/bash
+apt-get update -y
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+systemctl enable --now docker
+
+cd /opt
+git clone https://github.com/EstupendoG/pw3-backend app
+cd app
+
+# Gera .env
+cat > env << 'EOF'
+DATABASE_URL=postgresql://appuser:senha-forte@<IP_PRIVADO_DB>:5432/postcardd
+FRONTEND_ORIGIN=http://<IP_PUBLICO_FRONTEND>
+PORT=3000
+EOF
+
+docker compose up -d --build
+
+# Migrations do banco
+docker compose exec api1 npx prisma migrate dev

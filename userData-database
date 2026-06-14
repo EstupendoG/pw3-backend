@@ -1,0 +1,25 @@
+#!/bin/bash
+apt-get update -y
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+systemctl enable --now docker
+
+cat > docker-compose.yml << 'EOF'
+    services:
+        db:
+            image: postgres:16-alpine
+            environment:
+                POSTGRES_USER: appuser
+                POSTGRES_PASSWORD: password
+                POSTGRES_DB: postcardd
+            volumes:
+                - pgdata:/var/lib/postgresql/data
+            ports:
+                - "5432:5432"
+            restart: unless-stopped
+
+    volumes:
+        pgdata:
+EOF
+
+docker compose up -d

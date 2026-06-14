@@ -53,165 +53,187 @@ var CONTINENTS_MAP = {
     "South America": "América do Sul",
     "Oceania": "Oceania"
 };
-var LANGUAGES_PT_MAP = {
-    "Afrikaans": "Africânder", "Albanian": "Albanês", "Amharic": "Amárico",
-    "Arabic": "Árabe", "Armenian": "Armênio", "Aymara": "Aimará",
-    "Azerbaijani": "Azerbaijano", "Basque": "Basco", "Belarusian": "Bielorrusso",
-    "Bengali": "Bengali", "Berber": "Berbere", "Bislama": "Bislamá",
-    "Bosnian": "Bosníaco", "Bulgarian": "Búlgaro", "Burmese": "Birmanês",
-    "Catalan": "Catalão", "Chamorro": "Chamorro", "Chinese": "Chinês",
-    "Croatian": "Croata", "Czech": "Tcheco", "Danish": "Dinamarquês",
-    "Dari": "Dari", "Divehi": "Divehi", "Dutch": "Holandês",
-    "Dzongkha": "Dzongkha", "English": "Inglês", "Estonian": "Estoniano",
-    "Faroese": "Feroês", "Fijian": "Fijiano", "Finnish": "Finlandês",
-    "French": "Francês", "Fula": "Fula", "Gaelic": "Gaélico",
-    "Galician": "Galego", "Ganda": "Ganda", "Georgian": "Georgiano",
-    "German": "Alemão", "Greek": "Grego", "Greenlandic": "Groenlandês",
-    "Guarani": "Guarani", "Gujarati": "Gujarati", "Haitian Creole": "Crioulo Haitiano",
-    "Hausa": "Hauçá", "Hebrew": "Hebraico", "Hindi": "Hindi",
-    "Hiri Motu": "Hiri Motu", "Hungarian": "Húngaro", "Icelandic": "Islandês",
-    "Igbo": "Igbo", "Indonesian": "Indonésio", "Irish": "Irlandês",
-    "Italian": "Italiano", "Japanese": "Japonês", "Javanese": "Javanês",
-    "Kannada": "Kannada", "Kanuri": "Kanuri", "Kashmiri": "Caxemira",
-    "Kazakh": "Cazaque", "Khmer": "Khmer", "Kikuyu": "Kikuyu",
-    "Kinyarwanda": "Quiniaruanda", "Korean": "Coreano", "Kyrgyz": "Quirguiz",
-    "Lao": "Lao", "Latin": "Latim", "Latvian": "Letão",
-    "Letzeburgesh": "Luxemburguês", "Lingala": "Lingala", "Lithuanian": "Lituano",
-    "Luba-Katanga": "Luba-Katanga", "Luo": "Luo", "Luxembourgish": "Luxemburguês",
-    "Macedonian": "Macedônio", "Madurese": "Madurês", "Malagasy": "Malgaxe",
-    "Malay": "Malaio", "Malayalam": "Malaiala", "Maldivian": "Maldiviano",
-    "Maltese": "Maltês", "Manipuri": "Manipuri", "Manx": "Manx",
-    "Maori": "Maori", "Marathi": "Marati", "Mari": "Mari",
-    "Marshallese": "Marshalês", "Minangkabau": "Minangkabau", "Mirandese": "Mirandês",
-    "Miskito": "Miskito", "Mohawk": "Mohawk", "Moldavian": "Moldavo",
-    "Mongolian": "Mongol", "Montenegrin": "Montenegrino", "Morisyen": "Morisien",
-    "Mossi": "Mossi", "Nahuatl": "Nahuatl", "Namibian": "Namibiano",
-    "Nauruan": "Nauruano", "Navajo": "Navajo", "Ndonga": "Ndonga",
-    "Nepali": "Nepalês", "Newari": "Newari", "Nias": "Nias",
-    "Niuean": "Niueano", "Norwegian": "Norueguês", "Norwegian Bokmal": "Norueguês Bokmål",
-    "Norwegian Nynorsk": "Norueguês Nynorsk", "Occitan": "Occitano", "Odia": "Odia",
-    "Ojibwa": "Ojibwa", "Oromo": "Oromo", "Ossetian": "Ossético",
-    "Palauan": "Palauano", "Pali": "Pali", "Papiamento": "Papiamento",
-    "Pashto": "Paxto", "Persian (Farsi)": "Persa", "Polish": "Polonês",
-    "Portuguese": "Português", "Romanian": "Romeno", "Russian": "Russo",
-    "Samoan": "Samoano", "Sango": "Sango", "Sanskrit": "Sânscrito",
-    "Serbian": "Sérvio", "Seychellois Creole": "Crioulo Seichelense", "Shan": "Shan",
-    "Shona": "Shona", "Sicilian": "Siciliano", "Sindhi": "Sindi",
-    "Sinhala": "Cingalês", "Siswati": "Siswati", "Slovak": "Eslovaco",
-    "Slovene": "Esloveno", "Somali": "Somali", "Spanish": "Espanhol",
-    "Sundanese": "Sundanês", "Susu": "Susu", "Swahili": "Suaíli",
-    "Swati": "Suati", "Swedish": "Sueco", "Tagalog": "Tagalo",
-    "Tajik": "Tadjique", "Tamil": "Tâmil", "Tatar": "Tátaro",
-    "Telugu": "Telugu", "Tetum": "Tétum", "Thai": "Tailandês",
-    "Tibetan": "Tibetano", "Tigre": "Tigre", "Tigrinya": "Tigrínia",
-    "Tok Pisin": "Tok Pisin", "Tokelauan": "Tokelauano", "Tonga": "Tonganês",
-    "Tongan": "Tonganês", "Tswana": "Tswana", "Tumbuka": "Tumbuka",
-    "Turkish": "Turco", "Turkmen": "Turcomeno", "Tuvan": "Tuvan",
-    "Twi": "Twi", "Udmurt": "Udmurt", "Ukrainian": "Ucraniano",
-    "Umbundu": "Umbundo", "Upper Sorbian": "Alto Sórbio", "Urdu": "Urdu",
-    "Uyghur": "Uigur", "Uzbek": "Uzbeque", "Vai": "Vai",
-    "Venda": "Venda", "Vietnamese": "Vietnamita", "Volapük": "Volapük",
-    "Walloon": "Valon", "Waray": "Waray", "Welsh": "Galês",
-    "Wolof": "Vólof", "Xhosa": "Xhosa", "Yakut": "Iakuto",
-    "Yao": "Yao", "Yapese": "Yapês", "Yiddish": "Iídiche",
-    "Yoruba": "Iorubá", "Yupik": "Yupik", "Zapotec": "Zapoteca",
-    "Zaza": "Zaza", "Zhuang": "Zhuang", "Zulu": "Zulu"
+var LANGUAGES_PT = {
+    "Afrikaans": "Africânder",
+    "Albanian": "Albanês",
+    "Amharic": "Amárico",
+    "Arabic": "Árabe",
+    "Armenian": "Armênio",
+    "Aymara": "Aimará",
+    "Azerbaijani": "Azeri",
+    "Bangladeshi": "Bengali",
+    "Basque": "Basco",
+    "Belarusian": "Bielorrusso",
+    "Bengali": "Bengali",
+    "Berber": "Berbere",
+    "Bislama": "Bislama",
+    "Bosnian": "Bósnio",
+    "Bulgarian": "Búlgaro",
+    "Burmese": "Birmanês",
+    "Cambodian": "Cambojano",
+    "Carolinian": "Carolínio",
+    "Catalan": "Catalão",
+    "Chibarwe": "Chibarwe",
+    "Chinese": "Chinês",
+    "Croatian": "Croata",
+    "Czech": "Tcheco",
+    "Danish": "Dinamarquês",
+    "Dari": "Dari",
+    "Divehi": "Divehi",
+    "Dutch": "Holandês",
+    "English": "Inglês",
+    "Estonian": "Estoniano",
+    "Faroese": "Faroês",
+    "Fijian": "Fijiano",
+    "Finnish": "Finlandês",
+    "French": "Francês",
+    "Georgian": "Georgiano",
+    "German": "Alemão",
+    "Ghanaian": "Ganês",
+    "Greek": "Grego",
+    "Greenlandic": "Gronelandês",
+    "Guaraní": "Guarani",
+    "Gujarati": "Gujarati",
+    "Haitian Creole": "Crioulo Haitiano",
+    "Hausa": "Hauçá",
+    "Hebrew": "Hebraico",
+    "Hindi": "Hindi",
+    "Hungarian": "Húngaro",
+    "Icelandic": "Islandês",
+    "Igbo": "Ibo",
+    "Indonesian": "Indonésio",
+    "Irish": "Irlandês",
+    "Italian": "Italiano",
+    "Japanese": "Japonês",
+    "Javanese": "Javanês",
+    "Kazakh": "Cazaque",
+    "Khmer": "Khmer",
+    "Korean": "Coreano",
+    "Kurdish": "Curdo",
+    "Kyrgyz": "Quirguiz",
+    "Lao": "Laosiano",
+    "Latin": "Latim",
+    "Latvian": "Letão",
+    "Lingala": "Lingala",
+    "Lithuanian": "Lituano",
+    "Luxembourgish": "Luxemburguês",
+    "Macedonian": "Macedônio",
+    "Malagasy": "Malgaxe",
+    "Malay": "Malaio",
+    "Malayalam": "Malaiala",
+    "Maltese": "Maltês",
+    "Maldivian": "Maldiviano",
+    "Marathi": "Marathi",
+    "Mongolian": "Mongol",
+    "Montenegrin": "Montenegrino",
+    "Nepali": "Nepalês",
+    "Norwegian": "Norueguês",
+    "Norwegian Nynorsk": "Norueguês Nynorsk",
+    "Pali": "Páli",
+    "Panjabi": "Panjabi",
+    "Papiamento": "Papiamento",
+    "Persian (Farsi)": "Persa",
+    "Polish": "Polonês",
+    "Portuguese": "Português",
+    "Punjabi": "Punjabi",
+    "Romanian": "Romeno",
+    "Russian": "Russo",
+    "Samoan": "Samoano",
+    "Sango": "Sango",
+    "Sanskrit": "Sânscrito",
+    "Serbian": "Sérvio",
+    "Seychellois Creole": "Crioulo Seichelense",
+    "Shona": "Shona",
+    "Sinhala": "Cingalês",
+    "Slovak": "Eslovaco",
+    "Slovene": "Esloveno",
+    "Somali": "Somali",
+    "Spanish": "Espanhol",
+    "Swahili": "Suaíli",
+    "Swedish": "Sueco",
+    "Swiss German": "Alemão Suíço",
+    "Tagalog": "Tagalo",
+    "Tajik": "Tajique",
+    "Tamil": "Tâmil",
+    "Tatar": "Tártaro",
+    "Telugu": "Télugo",
+    "Thai": "Tailandês",
+    "Tibetan": "Tibetano",
+    "Tigrinya": "Tigrínia",
+    "Tok Pisin": "Tok Pisin",
+    "Tonga": "Tonga",
+    "Tsonga": "Tsonga",
+    "Turkish": "Turco",
+    "Turkmen": "Turcomeno",
+    "Twi": "Twi",
+    "Ukrainian": "Ucraniano",
+    "Urdu": "Urdu",
+    "Uyghur": "Uigur",
+    "Uzbek": "Uzbeque",
+    "Vietnamese": "Vietnamita",
+    "Walloon": "Valão",
+    "Welsh": "Galês",
+    "Xhosa": "Xosa",
+    "Yiddish": "Iídiche",
+    "Yoruba": "Iorubá",
+    "Zulu": "Zulu"
 };
-var CURRENCIES_PT_MAP = {
-    "Afghan Afghani": "Afegani Afegão", "Albanian Lek": "Lek Albanês",
-    "Algerian Dinar": "Dinar Argelino", "Angolan Kwanza": "Kwanza Angolano",
-    "Argentine Peso": "Peso Argentino", "Armenian Dram": "Dram Armênio",
-    "Aruban Florin": "Florim de Aruba", "Australian Dollar": "Dólar Australiano",
-    "Azerbaijani Manat": "Manat Azerbaijano", "Bahamian Dollar": "Dólar das Bahamas",
-    "Bahraini Dinar": "Dinar do Bahrein", "Bangladeshi Taka": "Taka Bangladexano",
-    "Barbadian Dollar": "Dólar Barbadiano", "Belarusian Ruble": "Rublo Bielorrusso",
-    "Belize Dollar": "Dólar de Belize", "Bermudian Dollar": "Dólar das Bermudas",
-    "Bhutanese Ngultrum": "Ngultrum Butanês", "Bolivian Boliviano": "Boliviano",
-    "Botswanan Pula": "Pula Botsuanesa", "Brazilian Real": "Real Brasileiro",
-    "British Pound Sterling": "Libra Esterlina", "Brunei Dollar": "Dólar de Brunei",
-    "Bulgarian Lev": "Lev Búlgaro", "Burundian Franc": "Franco Burundiano",
-    "Cambodian Riel": "Riel Cambojano", "Canadian Dollar": "Dólar Canadense",
-    "Cape Verdean Escudo": "Escudo Cabo-Verdiano", "Cayman Islands Dollar": "Dólar das Ilhas Cayman",
-    "Central African CFA Franc": "Franco CFA da África Central", "Chilean Peso": "Peso Chileno",
-    "Chinese Yuan": "Yuan Chinês", "Colombian Peso": "Peso Colombiano",
-    "Comorian Franc": "Franco Comoriano", "Congolese Franc": "Franco Congolês",
-    "Costa Rican Colón": "Colón Costarriquenho", "Croatian Kuna": "Kuna Croata",
-    "Cuban Peso": "Peso Cubano", "Czech Koruna": "Coroa Tcheca",
-    "Danish Krone": "Coroa Dinamarquesa", "Djiboutian Franc": "Franco Jibutiano",
-    "Dominican Peso": "Peso Dominicano", "East Caribbean Dollar": "Dólar do Caribe Oriental",
-    "Egyptian Pound": "Libra Egípcia", "Salvadoran Colón": "Colón Salvadorenho",
-    "Equatorial Guinean Franc": "Franco da Guiné Equatorial", "Eritrean Nakfa": "Nakfa Eritreia",
-    "Estonian Kroon": "Coroa Estoniana", "Ethiopian Birr": "Birr Etíope",
-    "Euro": "Euro", "Falkland Islands Pound": "Libra das Ilhas Malvinas",
-    "Fijian Dollar": "Dólar Fijiano", "French Franc": "Franco Francês",
-    "Gambian Dalasi": "Dalasi Gambiano", "Georgian Lari": "Lari Georgiano",
-    "Ghanaian Cedi": "Cedi Ganês", "Gibraltar Pound": "Libra de Gibraltar",
-    "Greek Drachma": "Dracma Grego", "Greenlandic Krone": "Coroa Groenlandesa",
-    "Grenadian Dollar": "Dólar de Granada", "Guatemalan Quetzal": "Quetzal Guatemaleco",
-    "Guinean Franc": "Franco Guinéano", "Guyanaese Dollar": "Dólar Guianense",
-    "Haitian Gourde": "Gourde Haitiano", "Honduran Lempira": "Lempira Hondurenho",
-    "Hong Kong Dollar": "Dólar de Hong Kong", "Hungarian Forint": "Forint Húngaro",
-    "Icelandic Króna": "Coroa Islandesa", "Indian Rupee": "Rupia Indiana",
-    "Indonesian Rupiah": "Rupia Indonésia", "Iranian Rial": "Rial Iraniano",
-    "Iraqi Dinar": "Dinar Iraquiano", "Irish Pound": "Libra Irlandesa",
-    "Israeli Shekel": "Shekel Israelense", "Jamaican Dollar": "Dólar Jamaicano",
-    "Japanese Yen": "Iene Japonês", "Jordanian Dinar": "Dinar Jordaniano",
-    "Kazakhstani Tenge": "Tenge Cazaque", "Kenyan Shilling": "Xelim Queniano",
-    "Kuwaiti Dinar": "Dinar Kuwaitiano", "Kyrgyzstani Som": "Som Quirguiz",
-    "Laotian Kip": "Kip Laosiano", "Latvian Lats": "Lats Letão",
-    "Lebanese Pound": "Libra Libanesa", "Lesotho Loti": "Loti de Lesoto",
-    "Liberian Dollar": "Dólar Liberiano", "Libyan Dinar": "Dinar Líbio",
-    "Liechtenstein Franc": "Franco de Liechtenstein", "Lithuanian Litas": "Litas Lituano",
-    "Luxembourg Franc": "Franco Luxemburguês", "Macanese Pataca": "Pataca Macaense",
-    "Macedonian Denar": "Denário Macedônio", "Madagascan Ariary": "Ariary Malgaxe",
-    "Malawian Kwacha": "Kwacha Malauiano", "Malaysian Ringgit": "Rincal Malaio",
-    "Maldivian Rufiyaa": "Rufiyaa Maldiviana", "Malian Franc": "Franco Maliano",
-    "Maltese Lira": "Lira Maltesa", "Mauritanian Ouguiya": "Ouguiya Mauritana",
-    "Mauritian Rupee": "Rupia Mauriciana", "Mexican Peso": "Peso Mexicano",
-    "Micronesian Dollar": "Dólar Micronesiano", "Moldovan Leu": "Leu Moldavo",
-    "Mongolian Tugrik": "Tugrik Mongol", "Moroccan Dirham": "Dirã Marroquino",
-    "Mozambican Metical": "Metical Moçambicano", "Myanmar Kyat": "Kyat Birmanês",
-    "Namibian Dollar": "Dólar da Namíbia", "Nepalese Rupee": "Rupia Nepalesa",
-    "Netherlands Guilder": "Florim Holandês", "New Zealand Dollar": "Dólar Neozelandês",
-    "Nicaraguan Córdoba": "Córdoba Nicaraguano", "Nigerian Naira": "Naira Nigeriana",
-    "Norwegian Krone": "Coroa Norueguesa", "Omani Rial": "Rial Omanense",
-    "Pakistani Rupee": "Rupia Paquistanesa", "Palauan Dollar": "Dólar Palauano",
-    "Panamanian Balboa": "Balboa Panamenho", "Papua New Guinean Kina": "Kina de Papua-Nova Guiné",
-    "Paraguayan Guaraní": "Guarani Paraguaio", "Peruvian Sol": "Sol Peruano",
-    "Philippine Peso": "Peso Filipino", "Polish Zloty": "Zloti Polonês",
-    "Portuguese Escudo": "Escudo Português", "Qatari Rial": "Rial Catari",
-    "Romanian Leu": "Leu Romeno", "Russian Ruble": "Rublo Russo",
-    "Rwandan Franc": "Franco Ruandês", "Saint Helena Pound": "Libra de Santa Helena",
-    "Samoan Tala": "Tala Samoano", "São Tomé and Príncipe Dobra": "Dobra de São Tomé e Príncipe",
-    "Saudi Riyal": "Rial Saudita", "Serbian Dinar": "Dinar Sérvio",
-    "Seychellois Rupee": "Rupia Seichelense", "Sierra Leonean Leone": "Leone Serra-Leonês",
-    "Singapore Dollar": "Dólar de Singapura", "Slovak Koruna": "Coroa Eslovaca",
-    "Slovenian Tolar": "Tolar Esloveno", "Solomon Islands Dollar": "Dólar das Ilhas Salomão",
-    "Somali Shilling": "Xelim Somali", "South African Rand": "Rand Sul-Africano",
-    "South Korean Won": "Won Sul-Coreano", "Spanish Peseta": "Peseta Espanhola",
-    "Sri Lankan Rupee": "Rupia Sri-Lankana", "Sudanese Pound": "Libra Sudanesa",
-    "Surinamese Dollar": "Dólar Surinamês", "Swedish Krona": "Coroa Sueca",
-    "Swiss Franc": "Franco Suíço", "Syrian Pound": "Libra Síria",
-    "Tajikistani Somoni": "Somoni Tajique", "Tanzanian Shilling": "Xelim Tanzaniano",
-    "Thai Baht": "Baht Tailandês", "Tongan Paanga": "Paanga Tonganês",
-    "Trinidad and Tobago Dollar": "Dólar de Trinidad e Tobago", "Tunisian Dinar": "Dinar Tunisino",
-    "Turkish Lira": "Lira Turca", "Turkmenistani Manat": "Manat Turcomeno",
-    "Tuvaluan Dollar": "Dólar Tuvaluano", "Ugandan Shilling": "Xelim Ugandense",
-    "Ukrainian Hryvnia": "Hryvnia Ucraniana", "United Arab Emirates Dirham": "Dirã dos Emirados Árabes Unidos",
-    "United States Dollar": "Dólar Americano", "Uruguayan Peso": "Peso Uruguaio",
-    "Uzbekistani Som": "Som Uzbeko", "Vanuatu Vatu": "Vatu Vanuatuano",
-    "Venezuelan Bolívar": "Bolívar Venezuelano", "Vietnamese Dong": "Dong Vietnamita",
-    "Yemeni Rial": "Rial Iemenita", "Zambian Kwacha": "Kwacha Zambiano",
-    "Zimbabwean Dollar": "Dólar Zimbabueano"
+var CURRENCIES_PT = {
+    "Euro": "Euro",
+    "US Dollar": "Dólar Americano",
+    "British Pound": "Libra Esterlina",
+    "Japanese Yen": "Iene Japonês",
+    "Swiss Franc": "Franco Suíço",
+    "Canadian Dollar": "Dólar Canadense",
+    "Australian Dollar": "Dólar Australiano",
+    "New Zealand Dollar": "Dólar Neozelandês",
+    "Chinese Yuan": "Yuan Chinês",
+    "Indian Rupee": "Rupia Indiana",
+    "Brazilian Real": "Real Brasileiro",
+    "Russian Ruble": "Rublo Russo",
+    "Mexican Peso": "Peso Mexicano",
+    "Singapore Dollar": "Dólar de Singapura",
+    "Hong Kong Dollar": "Dólar de Hong Kong",
+    "Swedish Krona": "Coroa Sueca",
+    "Norwegian Krone": "Coroa Norueguesa",
+    "Danish Krone": "Coroa Dinamarquesa",
+    "Polish Zloty": "Zloty Polonês",
+    "Czech Koruna": "Coroa Tcheca",
+    "Hungarian Forint": "Forint Húngaro",
+    "Romanian Leu": "Leu Romeno",
+    "Turkish Lira": "Lira Turca",
+    "South African Rand": "Rand Sul-Africano",
+    "Israeli Shekel": "Shekel Israelense",
+    "Thai Baht": "Baht Tailandês",
+    "Malaysian Ringgit": "Ringgit Malaio",
+    "Indonesian Rupiah": "Rupia Indonésia",
+    "Philippine Peso": "Peso Filipinense",
+    "Vietnamese Dong": "Dong Vietnamita",
+    "Pakistani Rupee": "Rupia Paquistanesa",
+    "Bangladesh Taka": "Taka Bengali",
+    "Sri Lankan Rupee": "Rupia do Sri Lanka",
+    "Kuwait Dinar": "Dinar Kuwaitiano",
+    "Saudi Riyal": "Rial Saudita",
+    "United Arab Emirates Dirham": "Dirham dos EAU",
+    "Qatari Rial": "Rial Qatariano",
+    "Omani Rial": "Rial Omanense",
+    "Bahraini Dinar": "Dinar Barenita",
+    "Argentine Peso": "Peso Argentino",
+    "Chilean Peso": "Peso Chileno",
+    "Colombian Peso": "Peso Colombiano",
+    "Peruvian Sol": "Sol Peruano",
+    "Venezuelan Bolivar": "Bolívar Venezuelano",
+    "Ecuadorian Dollar": "Dólar Equatoriano"
 };
 var GeoService = /** @class */ (function () {
     function GeoService() {
         this.continentRepository = new ContinentRepository_1.default();
         this.countryRepository = new CountryRepository_1.default();
     }
+    // Busca dados da API REST Countries
     GeoService.prototype.fetchFromRestCountries = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var response;
+            var response, data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, fetch("https://restcountries.com/v3.1/all?fields=name,flag,languages,currencies,continents,translations,population")];
@@ -220,17 +242,15 @@ var GeoService = /** @class */ (function () {
                         if (!response.ok) {
                             throw new Error("Erro ao buscar dados da API REST Countries");
                         }
-                        return [2 /*return*/, response.json()];
+                        return [4 /*yield*/, response.json()];
+                    case 2:
+                        data = _a.sent();
+                        return [2 /*return*/, data];
                 }
             });
         });
     };
-    GeoService.prototype.translateLanguage = function (lang) {
-        return LANGUAGES_PT_MAP[lang] || lang;
-    };
-    GeoService.prototype.translateCurrency = function (currency) {
-        return CURRENCIES_PT_MAP[currency] || currency;
-    };
+    // Sincroniza continentes no banco usando o repository
     GeoService.prototype.syncContinents = function () {
         return __awaiter(this, void 0, void 0, function () {
             var continentMap, _i, _a, _b, engName, ptName, continent, newContinent, created;
@@ -266,9 +286,10 @@ var GeoService = /** @class */ (function () {
             });
         });
     };
+    // Sincroniza países no banco usando o repository
     GeoService.prototype.syncCountries = function (countries, continentMap) {
         return __awaiter(this, void 0, void 0, function () {
-            var count, _i, countries_1, country, countryName, continentEng, continentId, language, currency, population, existingCountry, newCountry, error_1;
+            var count, _i, countries_1, country, countryName, continentEng, continentId, languageEn, language, currencyEn, currency, population, existingCountry, newCountry, error_1;
             var _a, _b, _c, _d, _e, _f, _g;
             return __generator(this, function (_h) {
                 switch (_h.label) {
@@ -287,15 +308,14 @@ var GeoService = /** @class */ (function () {
                         continentId = continentMap.get(continentEng);
                         if (!continentId)
                             return [3 /*break*/, 7];
-                        language = country.languages
+                        languageEn = country.languages
                             ? Object.values(country.languages)[0]
                             : "Desconhecido";
-                        currency = country.currencies
+                        language = LANGUAGES_PT[languageEn] || languageEn;
+                        currencyEn = country.currencies
                             ? (_f = (_e = Object.values(country.currencies)[0]) === null || _e === void 0 ? void 0 : _e.name) !== null && _f !== void 0 ? _f : "Desconhecida"
                             : "Desconhecida";
-                        // Traduz para português
-                        language = this.translateLanguage(language);
-                        currency = this.translateCurrency(currency);
+                        currency = CURRENCIES_PT[currencyEn] || currencyEn;
                         population = (_g = country.population) !== null && _g !== void 0 ? _g : 0;
                         return [4 /*yield*/, prismaClient_1.default.country.findFirst({
                                 where: { ctr_nome: countryName }
@@ -304,6 +324,7 @@ var GeoService = /** @class */ (function () {
                         existingCountry = _h.sent();
                         if (!!existingCountry) return [3 /*break*/, 5];
                         newCountry = new Country_1.default(countryName, population, language, continentId, currency);
+                        console.log("[DEBUG] Criando pa\u00EDs: ".concat(countryName, ", idioma: ").concat(language, ", moeda: ").concat(currency, ", continente: ").concat(continentId));
                         return [4 /*yield*/, this.countryRepository.create(newCountry)];
                     case 4:
                         _h.sent();
@@ -324,6 +345,7 @@ var GeoService = /** @class */ (function () {
             });
         });
     };
+    // Inicializa dados geográficos (executado uma vez ao iniciar o servidor)
     GeoService.prototype.initializeGeoData = function () {
         return __awaiter(this, void 0, void 0, function () {
             var existingContinents, countriesData, continentMap, countryCount, error_2;
@@ -362,6 +384,7 @@ var GeoService = /** @class */ (function () {
             });
         });
     };
+    // Função para sincronizar manualmente (se necessário)
     GeoService.prototype.syncGeoData = function () {
         return __awaiter(this, void 0, void 0, function () {
             var countriesData, continentMap, continents, countries, error_3;
@@ -382,7 +405,9 @@ var GeoService = /** @class */ (function () {
                     case 4:
                         continents = _a.sent();
                         return [4 /*yield*/, prismaClient_1.default.country.findMany({
-                                include: { continent: true }
+                                include: {
+                                    continent: true
+                                }
                             })];
                     case 5:
                         countries = _a.sent();
@@ -410,6 +435,7 @@ var GeoService = /** @class */ (function () {
             });
         });
     };
+    // Apenas retorna dados sem sincronizar
     GeoService.prototype.getGeoData = function () {
         return __awaiter(this, void 0, void 0, function () {
             var continents, countries;
@@ -419,7 +445,9 @@ var GeoService = /** @class */ (function () {
                     case 1:
                         continents = _a.sent();
                         return [4 /*yield*/, prismaClient_1.default.country.findMany({
-                                include: { continent: true }
+                                include: {
+                                    continent: true
+                                }
                             })];
                     case 2:
                         countries = _a.sent();
