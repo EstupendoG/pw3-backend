@@ -9,7 +9,7 @@ git clone https://github.com/EstupendoG/pw3-backend app
 cd app
 
 # Gera .env
-cat > env << 'EOF'
+cat > .env << 'EOF'
 DATABASE_URL=postgresql://appuser:senha-forte@<IP_PRIVADO_DB>:5432/postcardd
 FRONTEND_ORIGIN=http://<IP_PUBLICO_FRONTEND>
 PORT=3000

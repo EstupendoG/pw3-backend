@@ -1,0 +1,22 @@
+Host pcdd_vpn
+    HostName <IP_PUBLICO_VPN>
+    User ubuntu
+    IdentityFile C:\CAMINHO\PARA\chave.pem
+
+Host pcdd_backend
+    HostName <IP_PRIVADO_SERVER>
+    User ubuntu
+    IdentityFile C:\CAMINHO\PARA\chave.pem
+    ProxyJump pcdd_vpn
+
+Host pcdd_frontend
+    HostName <IP_PRIVADO_FRONTEND>
+    User ubuntu
+    IdentityFile C:\CAMINHO\PARA\chave.pem
+    ProxyJump pcdd_vpn
+
+Host pcdd_database
+    HostName <IP_PRIVADO_DATABASE>
+    User ubuntu
+    IdentityFile C:\CAMINHO\PARA\chave.pem
+    ProxyJump pcdd_vpn
